@@ -34,7 +34,7 @@ function receiveLoginUser(json) {
 }
 
 export function fetchLoginUser() {
-  return function(dispatch) {
+  return (dispatch) => {
     dispatch(requestLoginUser())
     return fetch('http://localhost:3001/api/UserProfiles').then(
       response => response.json(),
@@ -42,5 +42,24 @@ export function fetchLoginUser() {
     ).then(
       json => dispatch(receiveLoginUser(json))
     );
+  }
+}
+
+export function shouldFetchLoginUser(state) {
+  const user = state.currentUser;
+  if(user.length > 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+export function fetchLoginUserIfNeeded() {
+  return (dispatch, getState) => {
+    if(shouldFetchLoginUser(getState())) {
+      return dispatch(fetchLoginUser());
+    } else {
+      return Promise.resolve();
+    }
   }
 }

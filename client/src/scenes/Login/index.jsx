@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { fetchLoginUser } from './actions';
+import { fetchLoginUserIfNeeded } from './actions';
 import LoginComponent from './components/LoginComponent';
 
 const getCurrentUser = (currentUser) => {
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLoad: () => {
-      dispatch(fetchLoginUser())
+      dispatch(fetchLoginUserIfNeeded())
     }
   }
 }

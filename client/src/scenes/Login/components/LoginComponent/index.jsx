@@ -10,7 +10,6 @@ class LoginComponent extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         if(this.state.currentUser) {
             return <p>{this.state.currentUser.get('fullName')}</p>;            
         } else {
@@ -20,14 +19,25 @@ class LoginComponent extends React.Component {
 
     componentDidMount() {
         this.props.onLoad();
+        this.setCurrentUser(this.props.currentUser);
     }
 
     componentDidUpdate(prevProps, prevState) {
         if(this.props.currentUser != prevProps.currentUser) {
-            this.setState({
-                currentUser: Immutable.Map(this.props.currentUser[0])
-            });
+            this.setCurrentUser(this.props.currentUser);
         }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setCurrentUser(nextProps.currentUser);
+    }
+
+    setCurrentUser(currentUserObj) {
+        if(currentUserObj.length > 0) {
+            this.setState({
+                currentUser: Immutable.Map(currentUserObj[0])
+            });
+        }        
     }
 }
 
