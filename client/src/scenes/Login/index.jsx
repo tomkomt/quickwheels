@@ -1,18 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { fetchLoginUser } from './actions';
+import LoginComponent from './components/LoginComponent';
 
-class Login extends React.Component {
-  constructor() {
-    super();
-    this.state = { someKey: 'Login' };
-  }
+const getCurrentUser = (currentUser) => {
+  return currentUser;
+}
 
-  render() {
-    return <p>{this.state.someKey}</p>;
-  }
-
-  componentDidMount() {
-    this.setState({ someKey: 'Login' });
+const mapStateToProps = (state) => {
+  return {
+    currentUser: getCurrentUser(state.currentUser)
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLoad: () => {
+      dispatch(fetchLoginUser())
+    }
+  }
+}
+
+const Login = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginComponent)
 
 export default Login;
