@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node .",
-    "start-cl": "webpack-dev-server",    
+    "start-cl": "webpack-dev-server",
     "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "path": "^0.12.7",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-router-dom": "^4.2.2",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^2.0.0",
     "webpack": "^3.5.6",
