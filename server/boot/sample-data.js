@@ -11,4 +11,19 @@ module.exports = function(app) {
             console.log('Models created: \n', userProfiles);
         });
     })
+
+    app.dataSources.mockDatabase.automigrate('UserSetup', function(err) {
+        if(err) throw err;
+
+        app.models.UserSetup.create([{
+            userId: 465465,
+            pace: 75,
+            agresivity: 75,
+            consistency: 80,
+            startReaction: 60
+        }], function(err, userSetups) {
+            if (err) throw err;
+            console.log('Models created: \n', userSetups);
+        });
+    })
 }

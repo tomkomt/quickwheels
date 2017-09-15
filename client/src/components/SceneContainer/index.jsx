@@ -20,7 +20,7 @@ class SceneContainer extends React.Component {
           <ul>
             <li><Link to="/">Login</Link></li>
             <li><Link to="/driverSetup">Driver Setup</Link></li>
-            <li><Link to="/VehicleSetup">Car Setup</Link></li>
+            <li><Link to="/vehicleSetup">Car Setup</Link></li>
             <li><Link to="/qualification">Qualification</Link></li>
             <li><Link to="/race">Race</Link></li>
             <li><Link to="/standings">Standings</Link></li>

@@ -16,5 +16,9 @@
   "UserProfile": {
     "dataSource": "mockDatabase",
     "public": true
+  },
+  "UserSetup": {
+    "dataSource": "mockDatabase",
+    "public": true
   }
 }

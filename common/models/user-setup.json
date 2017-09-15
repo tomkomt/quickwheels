@@ -1,0 +1,38 @@
+{
+  "name": "UserSetup",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "pace": {
+      "type": "number",
+      "required": true,
+      "default": 50
+    },
+    "agresivity": {
+      "type": "number",
+      "required": true,
+      "default": 50
+    },
+    "consistency": {
+      "type": "number",
+      "required": true,
+      "default": 50
+    },
+    "startReaction": {
+      "type": "number",
+      "required": true,
+      "default": 50
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
