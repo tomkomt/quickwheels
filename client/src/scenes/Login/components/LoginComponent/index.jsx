@@ -1,5 +1,4 @@
 import React from 'react';
-import Immutable from 'immutable';
 
 class LoginComponent extends React.Component {
     constructor(props) {
@@ -33,9 +32,9 @@ class LoginComponent extends React.Component {
     }
 
     setCurrentUser(currentUserObj) {
-        if(currentUserObj.length > 0) {
+        if(currentUserObj) {
             this.setState({
-                currentUser: Immutable.Map(currentUserObj[0])
+                currentUser: currentUserObj
             });
         }        
     }

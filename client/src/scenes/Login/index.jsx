@@ -1,15 +1,12 @@
 import React from 'react';
+import Immutable from 'immutable';
 import { connect } from 'react-redux'
 import { fetchLoginUserIfNeeded } from './actions';
 import LoginComponent from './components/LoginComponent';
 
-const getCurrentUser = (currentUser) => {
-  return currentUser;
-}
-
 const mapStateToProps = (state) => {
   return {
-    currentUser: getCurrentUser(state.currentUser)
+    currentUser: state.currentUser.length > 0 ? Immutable.Map(state.currentUser[0]) : null
   }
 }
 
