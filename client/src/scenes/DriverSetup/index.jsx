@@ -1,7 +1,7 @@
 import React from 'react';
 import Immutable from 'immutable';
 import { connect } from 'react-redux'
-import { fetchDriverSetupIfNeeded } from './actions';
+import { fetchDriverSetupIfNeeded, updateDriverSetup, putUpdateDriverSetup } from './actions';
 import DriverSetupComponent from './components/DriverSetupComponent';
 
 const mapStateToProps = (state) => {
@@ -15,6 +15,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLoad: (userId) => {
       dispatch(fetchDriverSetupIfNeeded(userId))
+    },
+    onSaveChanges: (setupId, json) => {
+      dispatch(putUpdateDriverSetup(setupId, json))
     }
   }
 }

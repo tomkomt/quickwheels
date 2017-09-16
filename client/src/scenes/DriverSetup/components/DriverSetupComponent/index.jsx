@@ -1,5 +1,6 @@
 import React from 'react';
 import Immutable from 'immutable';
+import TextInput from '../../../../components/TextInput';
 
 class DriverSetupComponent extends React.Component {
     constructor(props) {
@@ -15,49 +16,46 @@ class DriverSetupComponent extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Pace: <input type="text" name="pace" value={this.state.pace} onChange={this.handleChangeSetup.bind(this)} /></label>
-                    <label>Agresivity: <input type="text" name="agresivity" value={this.state.agresivity} onChange={this.handleChangeSetup.bind(this)} /></label>
-                    <label>Consistency: <input type="text" name="consistency" value={this.state.consistency} onChange={this.handleChangeSetup.bind(this)} /></label>
-                    <label>Start Reaction: <input type="text" name="startReaction" value={this.state.startReaction} onChange={this.handleChangeSetup.bind(this)} /></label>
+                <form onSubmit={this.handleSubmit.bind(this)}>
+                    <TextInput label="Pace" name="pace" value={this.state.pace} handleChange={this.handlePaceChange.bind(this)}/>
+                    <TextInput label="Agresivity" name="agresivity" value={this.state.agresivity} handleChange={this.handleAgresivityChange.bind(this)}/>
+                    <TextInput label="Consistency" name="consistency" value={this.state.consistency} handleChange={this.handleConsistencyChange.bind(this)}/>
+                    <TextInput label="Start Reaction" name="startReaction" value={this.state.startReaction} handleChange={this.handleStartReactionChange.bind(this)}/>
                     <input type="submit" value="Submit" />
                 </form>
             </div>
         );
     }
 
-    handleChangeSetup(event) {
-        let fieldName = event.target.name;
-        let fieldValue = event.target.value;
-        switch(fieldName) {
-            case 'pace':
-                this.setState({
-                    pace: fieldValue
-                });
-            break;
+    handlePaceChange(value) {
+        this.setState({
+            pace: +value
+        })
+    }
 
-            case 'agresivity':
-                this.setState({
-                    agresivity: fieldValue
-                });
-            break;            
+    handleAgresivityChange(value) {
+        this.setState({
+            agresivity: +value
+        })
+    }
 
-            case 'consistency':
-                this.setState({
-                    consistency: fieldValue
-                });
-            break;
+    handleConsistencyChange(value) {
+        this.setState({
+            consistency: +value
+        })
+    }
 
-            case 'startReaction':
-                this.setState({
-                    startReaction: fieldValue
-                });
-            break;
-        }
+    handleStartReactionChange(value) {
+        this.setState({
+            startReaction: +value
+        })
     }
 
     handleSubmit(event) {
-
+        event.preventDefault();
+        let passState = this.state;
+        passState.userId = this.props.driverSetup.get('userId');
+        this.props.onSaveChanges(this.props.driverSetup.get('id'), passState);
     }
 
     componentDidMount() {
