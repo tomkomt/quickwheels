@@ -8,7 +8,8 @@ const currentUser = (state = [], action) => {
         ...state,
         {
           userId: action.userId,
-          fullName: action.fullName
+          fullName: action.fullName,
+          assignerTeamId: action.assignerTeamId
         }
       ]
 

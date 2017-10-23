@@ -20,5 +20,9 @@
   "UserSetup": {
     "dataSource": "mockDatabase",
     "public": true
+  },
+  "VehicleSetup": {
+    "dataSource": "mockDatabase",
+    "public": true
   }
 }

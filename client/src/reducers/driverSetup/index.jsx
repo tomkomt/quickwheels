@@ -1,4 +1,9 @@
-import { SHOW_DRIVER_SETUP, REQUEST_DRIVER_SETUP, RECEIVE_DRIVER_SETUP, UPDATE_DRIVER_SETUP } from '../../scenes/DriverSetup/actions';
+import { 
+	SHOW_DRIVER_SETUP, 
+	REQUEST_DRIVER_SETUP, 
+	RECEIVE_DRIVER_SETUP, 
+	UPDATE_DRIVER_SETUP 
+} from '../../scenes/DriverSetup/actions';
 
 const driverSetup = (state = [], action) => {
 	switch (action.type) {

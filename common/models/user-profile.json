@@ -17,6 +17,10 @@
     "lastName": {
       "type": "string",
       "required": true
+    },
+    "assignerTeamId": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],

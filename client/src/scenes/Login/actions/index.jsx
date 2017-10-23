@@ -5,7 +5,8 @@ export const loginUser = (userId, fullName) => {
   return {
     type: LOGIN_USER,
     userId,
-    fullName
+    fullName,
+    assignerTeamId
   }
 }
 
@@ -29,6 +30,7 @@ function receiveLoginUser(json) {
     type: RECEIVE_LOGIN_USER,
     userId: json[0].userId,
     fullName: json[0].firstName + ' ' + json[0].lastName,
+    assignerTeamId: json[0].assignerTeamId,
     receivedAt: Date.now()
   }
 }

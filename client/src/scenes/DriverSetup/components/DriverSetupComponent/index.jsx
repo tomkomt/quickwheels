@@ -17,10 +17,10 @@ class DriverSetupComponent extends React.Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit.bind(this)}>
-                    <TextInput label="Pace" name="pace" value={this.state.pace} handleChange={this.handlePaceChange.bind(this)}/>
-                    <TextInput label="Agresivity" name="agresivity" value={this.state.agresivity} handleChange={this.handleAgresivityChange.bind(this)}/>
-                    <TextInput label="Consistency" name="consistency" value={this.state.consistency} handleChange={this.handleConsistencyChange.bind(this)}/>
-                    <TextInput label="Start Reaction" name="startReaction" value={this.state.startReaction} handleChange={this.handleStartReactionChange.bind(this)}/>
+                    <div><TextInput label="Pace" name="pace" value={this.state.pace} handleChange={this.handlePaceChange.bind(this)}/></div>
+                    <div><TextInput label="Agresivity" name="agresivity" value={this.state.agresivity} handleChange={this.handleAgresivityChange.bind(this)}/></div>
+                    <div><TextInput label="Consistency" name="consistency" value={this.state.consistency} handleChange={this.handleConsistencyChange.bind(this)}/></div>
+                    <div><TextInput label="Start Reaction" name="startReaction" value={this.state.startReaction} handleChange={this.handleStartReactionChange.bind(this)}/></div>
                     <input type="submit" value="Submit" />
                 </form>
             </div>
@@ -53,7 +53,7 @@ class DriverSetupComponent extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        let passState = this.state;
+        let passState = Object.assign({}, this.state);
         passState.userId = this.props.driverSetup.get('userId');
         this.props.onSaveChanges(this.props.driverSetup.get('id'), passState);
     }
@@ -78,14 +78,8 @@ class DriverSetupComponent extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(this.props.driverSetup != prevProps.driverSetup) {
-            this.setState({
-                pace: this.props.driverSetup.get('pace'),
-                agresivity: this.props.driverSetup.get('agresivity'),
-                consistency: this.props.driverSetup.get('consistency'),
-                startReaction: this.props.driverSetup.get('startReaction')
-            });
-        }
+        console.log(this.props);
+        console.log(this.state);
     }
 
 }

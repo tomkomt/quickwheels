@@ -1,0 +1,47 @@
+{
+  "name": "VehicleSetup",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "assignedUserId": {
+      "type": "string",
+      "required": true
+    },
+    "teamId": {
+      "type": "string",
+      "required": true
+    },
+    "frontWing": {
+      "type": "number",
+      "required": true,
+      "default": 50
+    },
+    "rearWing": {
+      "type": "number",
+      "required": true,
+      "default": 50
+    },
+    "gearbox": {
+      "type": "number",
+      "required": true,
+      "default": 50
+    },
+    "suspension": {
+      "type": "number",
+      "required": true,
+      "default": 50
+    },
+    "turbo": {
+      "type": "number",
+      "required": true,
+      "default": 50
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

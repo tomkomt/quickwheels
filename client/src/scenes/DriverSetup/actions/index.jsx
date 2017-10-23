@@ -64,6 +64,7 @@ export const UPDATE_DRIVER_SETUP = 'UPDATE_DRIVER_SETUP';
 export function updateDriverSetup(setupId, json) {
   return {
     type: UPDATE_DRIVER_SETUP,
+    id: json.id,
     pace: json.pace,
     agresivity: json.agresivity,
     consistency: json.consistency,
@@ -87,6 +88,7 @@ export function putUpdateDriverSetup(setupId, json) {
       .put('http://localhost:3001/api/UserSetups/' + setupId)
       .send(json).end((err, res) => {
       if(err) console.error('Error', error);
+      dispatch(receiveDriverSetup(res.body))
     })
   }
 }

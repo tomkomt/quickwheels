@@ -5,11 +5,13 @@ module.exports = function(app) {
         app.models.UserProfile.create([{
             userId: 465465,
             firstName: 'Marek',
-            lastName: 'Tomko'
+            lastName: 'Tomko',
+            assignerTeamId: 123
         },{
             userId: 123546,
             firstName: 'Test',
-            lastName: 'Driver'
+            lastName: 'Driver',
+            assignerTeamId: 0
         }], function(err, userProfiles) {
             if (err) throw err;
             console.log('Models created: \n', userProfiles);
@@ -36,4 +38,21 @@ module.exports = function(app) {
             console.log('Models created: \n', userSetups);
         });
     })
+
+    app.dataSources.mockDatabase.automigrate('VehicleSetup', function(err) {
+        if(err) throw err;
+
+        app.models.VehicleSetup.create([{
+            assignedUserId: 465465,
+            teamId: 123,
+            frontWing: 75,
+            rearWing: 75,
+            gearbox: 80,
+            suspension: 60,
+            turbo: 50
+        }], function(err, vehicleSetups) {
+            if (err) throw err;
+            console.log('Models created: \n', vehicleSetups);
+        });
+    })    
 }
